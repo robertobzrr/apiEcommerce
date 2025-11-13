@@ -1,7 +1,9 @@
 package com.robertoapi.login_and_authentication_api.service;
 import com.robertoapi.login_and_authentication_api.model.User;
 import com.robertoapi.login_and_authentication_api.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +17,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+//------------------------------------------------------------------------------------------
 
     public void createUser(User user){
         userRepository.save(user);
@@ -34,5 +37,23 @@ public class UserService {
     public void deleteUserById(Long id){
         userRepository.deleteById(id);
     }
+
+
+    public void updateUserById(Long id, User updateUser){
+        Optional<User> userDB = findUserById(id);
+
+        if(userDB.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+        else{
+            User userEdit = userDB.get();
+
+            userEdit.setUsername(updateUser.getUsername());
+            userEdit.setPassword(updateUser.getPassword());
+
+            userRepository.save(userEdit);
+        }
+    }
+
 
 }

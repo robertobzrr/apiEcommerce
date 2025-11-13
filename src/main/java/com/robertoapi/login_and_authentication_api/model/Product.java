@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tb_products")
+@Table(name = "tb_product")
 public class Product {
 
     @Id
@@ -18,6 +18,7 @@ public class Product {
     private String nameProduct;
 
     @OneToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
 

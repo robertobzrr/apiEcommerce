@@ -20,6 +20,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/users/**").permitAll()
                         .requestMatchers("/products/**").permitAll()
+                        .requestMatchers("/carts/**").permitAll()
+                        .requestMatchers("/categorys/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .build();

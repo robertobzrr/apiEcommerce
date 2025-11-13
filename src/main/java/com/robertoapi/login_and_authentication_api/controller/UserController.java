@@ -18,6 +18,8 @@ public class UserController {
         this.userService = userService;
     }
 
+//-----------------------------------------------------------------------------------
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User user){
@@ -43,6 +45,13 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUserById(@PathVariable Long id){
         userService.deleteUserById(id);
+    }
+
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateUserById(@PathVariable Long id, @RequestBody User updateUser){
+        userService.updateUserById(id, updateUser);
     }
 
 
