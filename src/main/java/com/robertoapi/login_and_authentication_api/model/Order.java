@@ -7,23 +7,17 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tb_inventory")
-public class Inventory {
+@AllArgsConstructor
+@Table(name = "tb_orders")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "id_product")
-    private Product product;
-
-    private int estoque;
+    private String nameOrders;
 
 
-
-
+    //need to conect CART <-> ORDER, The order is the last step to close the cart seller.
 
 }
