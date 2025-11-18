@@ -48,7 +48,7 @@ public class UserService {
         else{
             User editUser = userDB.get();
 
-            editUser.setUsername(updateUser.getUsername());
+            editUser.setName(updateUser.getName());
             editUser.setPassword(updateUser.getPassword());
 
             userRepository.save(editUser);

@@ -49,7 +49,7 @@ public class ProductService {
         else{
             Product editProduct = productDB.get();
 
-            editProduct.setNameProduct(updateProduct.getNameProduct());
+            editProduct.setName(updateProduct.getName());
       //      editProduct.setCategory(updateProduct.getCategory());
 
             productRepository.save(editProduct);

@@ -49,8 +49,9 @@ public class CartService {
         else{
             Cart editCart = cartDB.get();
 
-            editCart.setNameCart(updateCart.getNameCart());
-            editCart.setProduct(updateCart.getProduct());
+            editCart.setName(updateCart.getName());
+            editCart.setUser(updateCart.getUser());
+
 
             cartRepository.save(editCart);
         }

@@ -49,7 +49,7 @@ public class CategoryService {
         else{
             Category editCategory = categoryDB.get();
 
-            editCategory.setNameCategory(updateCategory.getNameCategory());
+            editCategory.setName(updateCategory.getName());
 
             categoryRepository.save(editCategory);
 

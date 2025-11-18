@@ -50,7 +50,7 @@ public class InventoryService {
         else{
             Inventory editInventory = inventoryyDB.get();
 
-            editInventory.setEstoque(updateInventory.getEstoque());
+            editInventory.setQuantity(updateInventory.getQuantity());
 
             inventoryRepository.save(editInventory);
         }

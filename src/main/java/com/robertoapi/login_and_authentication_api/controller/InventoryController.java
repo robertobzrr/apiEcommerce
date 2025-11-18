@@ -34,7 +34,7 @@ public class InventoryController {
     }
 
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Inventory> findInventoryById(@PathVariable Long id){
         return inventoryService.findInventoryById(id);

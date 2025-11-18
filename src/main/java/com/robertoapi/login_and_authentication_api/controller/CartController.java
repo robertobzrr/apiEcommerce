@@ -33,21 +33,21 @@ public class CartController {
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Cart> findCartById(@PathVariable Long id){
         return cartService.findCartById(id);
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCartById(@PathVariable Long id){
         cartService.deleteCartById(id);
     }
 
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCartById(@PathVariable Long id, @RequestBody Cart updateCart){
         cartService.updateCartById(id, updateCart);
