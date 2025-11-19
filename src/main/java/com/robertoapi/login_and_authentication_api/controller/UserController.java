@@ -1,5 +1,7 @@
 package com.robertoapi.login_and_authentication_api.controller;
 
+import com.robertoapi.login_and_authentication_api.dto.UserRequestDTO;
+import com.robertoapi.login_and_authentication_api.dto.UserResponseDTO;
 import com.robertoapi.login_and_authentication_api.model.User;
 import com.robertoapi.login_and_authentication_api.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -22,21 +24,21 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody User user){
-        userService.createUser(user);
+    public void createUser(@RequestBody UserRequestDTO userDTO){
+        userService.createUser(userDTO);
     }
 
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<User> findAllUsers(){
+    public List<UserResponseDTO> findAllUsers(){
         return userService.findAllUsers();
     }
 
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<User> findUserById(@PathVariable Long id){
+    public Optional<UserResponseDTO> findUserById(@PathVariable Long id){
         return userService.findUserById(id);
     }
 
@@ -50,8 +52,8 @@ public class UserController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateUserById(@PathVariable Long id, @RequestBody User updateUser){
-        userService.updateUserById(id, updateUser);
+    public void updateUserById(@PathVariable Long id, @RequestBody UserRequestDTO updateUserDTO){
+        userService.updateUserById(id, updateUserDTO);
     }
 
 
