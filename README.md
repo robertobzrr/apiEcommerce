@@ -8,7 +8,7 @@ after a week I lost the chance to keep uupdating progress here. I'll make it now
 
 
 
-- Everything tested and working on creation of tables and table connections. Next step is to create all DTO.
+-> Everything tested and working on creation of tables and table connections. Next step is to create all DTO.
 
   LOGS:
 <img width="1363" height="1177" alt="image" src="https://github.com/user-attachments/assets/415bb32e-e050-405a-a0ac-9a42e18791f6" />
@@ -30,6 +30,21 @@ TB_PRODUCT
 
 TB_USER
 <img width="1281" height="416" alt="image" src="https://github.com/user-attachments/assets/a15c67ea-294c-49a7-80df-6b1c6d437dfe" />
+
+-
+-
+
+-> Tested and fixing some HTTP GET that was show the full entity data, now using mapper class its everything better. I'm still doing all DTO, its going slow because I do one and test everything if its working if it is I move to the next.
+
+INSOMNIA_TEST
+
+BEFORE_MAPPER
+<img width="819" height="797" alt="Captura de tela 2025-11-21 101422" src="https://github.com/user-attachments/assets/15dc081e-11b5-4aae-a8df-54cff3814dfd" />
+
+AFTER_MAP
+<img width="1795" height="942" alt="Captura de tela 2025-11-21 101531" src="https://github.com/user-attachments/assets/f17d7123-f79d-4c81-834e-1e8554875c74" />
+
+<img width="1753" height="926" alt="Captura de tela 2025-11-21 101543" src="https://github.com/user-attachments/assets/d3812d1e-060d-4af7-bc83-4588ea7eef4d" />
 
 
 
