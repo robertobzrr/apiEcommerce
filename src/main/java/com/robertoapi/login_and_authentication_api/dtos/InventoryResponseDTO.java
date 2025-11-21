@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 public class InventoryResponseDTO {
     private Integer quantity;
-    private Product product;
+    private ProductResponseDTO product;
 }

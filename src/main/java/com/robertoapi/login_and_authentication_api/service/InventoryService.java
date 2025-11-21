@@ -2,6 +2,7 @@ package com.robertoapi.login_and_authentication_api.service;
 
 import com.robertoapi.login_and_authentication_api.dtos.InventoryRequestDTO;
 import com.robertoapi.login_and_authentication_api.dtos.InventoryResponseDTO;
+import com.robertoapi.login_and_authentication_api.mappers.ProductMapper;
 import com.robertoapi.login_and_authentication_api.model.Inventory;
 import com.robertoapi.login_and_authentication_api.repository.InventoryRepository;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,11 @@ import java.util.stream.Collectors;
 public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
+    private final ProductMapper productMapper;
 
-    public InventoryService(InventoryRepository inventoryRepository){
+    public InventoryService(InventoryRepository inventoryRepository, ProductMapper productMapper){
         this.inventoryRepository = inventoryRepository;
+        this.productMapper = productMapper;
     }
 
 //---------------------------------------------------------------------------------------
@@ -81,7 +84,7 @@ public class InventoryService {
         InventoryResponseDTO respDTO = new InventoryResponseDTO();
 
         respDTO.setQuantity(inventory.getQuantity());
-        respDTO.setProduct((inventory.getProduct()));
+        respDTO.setProduct(productMapper.toResponseDTO(inventory.getProduct()));
 
         return respDTO;
     }

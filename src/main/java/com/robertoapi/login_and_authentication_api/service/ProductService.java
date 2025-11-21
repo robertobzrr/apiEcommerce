@@ -5,6 +5,7 @@ import com.robertoapi.login_and_authentication_api.dtos.ProductResponseDTO;
 import com.robertoapi.login_and_authentication_api.model.Product;
 import com.robertoapi.login_and_authentication_api.repository.ProductRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -80,14 +81,14 @@ public class ProductService {
     }
 
 
-    private ProductResponseDTO toResponseDTO(Product product){
-        ProductResponseDTO respDTO = new ProductResponseDTO();
-        respDTO.setName(product.getName());
-        respDTO.setDescription(product.getDescription());
-        respDTO.setPrice(product.getPrice());
+        private ProductResponseDTO toResponseDTO(Product product){
+            ProductResponseDTO respDTO = new ProductResponseDTO();
+            respDTO.setName(product.getName());
+            respDTO.setDescription(product.getDescription());
+            respDTO.setPrice(product.getPrice());
 
-        return respDTO;
-    }
+            return respDTO;
+        }
 
 
 }
