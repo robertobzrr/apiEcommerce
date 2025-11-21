@@ -1,0 +1,14 @@
+package com.robertoapi.login_and_authentication_api.dtos;
+
+import com.robertoapi.login_and_authentication_api.model.CartItem;
+import com.robertoapi.login_and_authentication_api.model.User;
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+public class CartResponseDTO {
+    private String name;
+    private UserResponseDTO user;
+    private List<CartItem> items;
+}

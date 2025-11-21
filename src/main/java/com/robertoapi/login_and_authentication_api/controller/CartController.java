@@ -1,4 +1,6 @@
 package com.robertoapi.login_and_authentication_api.controller;
+import com.robertoapi.login_and_authentication_api.dtos.CartRequestDTO;
+import com.robertoapi.login_and_authentication_api.dtos.CartResponseDTO;
 import com.robertoapi.login_and_authentication_api.model.Cart;
 import com.robertoapi.login_and_authentication_api.service.CartService;
 import org.springframework.http.HttpStatus;
@@ -21,21 +23,21 @@ public class CartController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCart(@RequestBody Cart cart){
-        cartService.createCart(cart);
+    public void createCart(@RequestBody CartRequestDTO cartDTO){
+        cartService.createCart(cartDTO);
     }
 
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Cart> findAllCarts(){
+    public List<CartResponseDTO> findAllCarts(){
         return cartService.findAllCarts();
     }
 
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Cart> findCartById(@PathVariable Long id){
+    public Optional<CartResponseDTO> findCartById(@PathVariable Long id){
         return cartService.findCartById(id);
     }
 
@@ -49,8 +51,8 @@ public class CartController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCartById(@PathVariable Long id, @RequestBody Cart updateCart){
-        cartService.updateCartById(id, updateCart);
+    public void updateCartById(@PathVariable Long id, @RequestBody CartRequestDTO updateCartDTO){
+        cartService.updateCartById(id, updateCartDTO);
     }
 
 
