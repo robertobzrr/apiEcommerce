@@ -1,5 +1,7 @@
 package com.robertoapi.login_and_authentication_api.service;
 
+import com.robertoapi.login_and_authentication_api.dtos.InventoryRequestDTO;
+import com.robertoapi.login_and_authentication_api.dtos.InventoryResponseDTO;
 import com.robertoapi.login_and_authentication_api.model.Inventory;
 import com.robertoapi.login_and_authentication_api.repository.InventoryRepository;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InventoryService {
@@ -21,18 +24,22 @@ public class InventoryService {
 
 //---------------------------------------------------------------------------------------
 
-    public void createInventory(Inventory inventory){
+    public void createInventory(InventoryRequestDTO inventoryDTO){
+        Inventory inventory = toEntity(inventoryDTO);
         inventoryRepository.save(inventory);
     }
 
 
-    public List<Inventory> findAllInventorys(){
-        return inventoryRepository.findAll();
+    public List<InventoryResponseDTO> findAllInventorys(){
+        return inventoryRepository.findAll()
+                .stream()
+                .map(this::toResponseDTO)
+                .collect(Collectors.toList());
     }
 
 
-    public Optional<Inventory> findInventoryById(Long id){
-        return inventoryRepository.findById(id);
+    public Optional<InventoryResponseDTO> findInventoryById(Long id){
+        return inventoryRepository.findById(id).map(this::toResponseDTO);
     }
 
 
@@ -41,20 +48,46 @@ public class InventoryService {
     }
 
 
-    public void updateInventoryById(Long id, Inventory updateInventory){
-        Optional<Inventory> inventoryyDB = findInventoryById(id);
+    public void updateInventoryById(Long id, InventoryRequestDTO updateInventoryDTO){
+        Optional<Inventory> inventoryDB = inventoryRepository.findById(id);
 
-        if(inventoryyDB.isEmpty()){
+        if(inventoryDB.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Inventory not found");
         }
         else{
-            Inventory editInventory = inventoryyDB.get();
+            Inventory editInventory = inventoryDB.get();
 
-            editInventory.setQuantity(updateInventory.getQuantity());
+            editInventory.setQuantity(updateInventoryDTO.getQuantity());
 
             inventoryRepository.save(editInventory);
         }
     }
+
+
+//------------------------------------------------------------------------------------------
+//DTOs
+
+    private Inventory toEntity(InventoryRequestDTO inventoryDTO){
+        Inventory inventory = new Inventory();
+
+        inventory.setQuantity(inventoryDTO.getQuantity());
+        inventory.setProduct(inventoryDTO.getProduct());
+
+        return inventory;
+    }
+
+
+    private InventoryResponseDTO toResponseDTO(Inventory inventory){
+        InventoryResponseDTO respDTO = new InventoryResponseDTO();
+
+        respDTO.setQuantity(inventory.getQuantity());
+        respDTO.setProduct((inventory.getProduct()));
+
+        return respDTO;
+    }
+
+
+
 
 
 

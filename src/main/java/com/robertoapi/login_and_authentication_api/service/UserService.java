@@ -71,6 +71,7 @@ public class UserService {
 
     private User toEntity(UserRequestDTO userDTO){
         User user = new User();
+
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
