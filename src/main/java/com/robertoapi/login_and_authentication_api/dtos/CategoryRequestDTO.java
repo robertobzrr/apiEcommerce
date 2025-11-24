@@ -9,5 +9,5 @@ import java.util.List;
 @Data
 public class CategoryRequestDTO {
     private String name;
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
 }
